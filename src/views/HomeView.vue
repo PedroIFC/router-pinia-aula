@@ -1,6 +1,12 @@
 <script setup>
+import { useRouter } from 'vue-router';
 import { useProductStore } from '@/stores/product';
 const productStore = useProductStore()
+const router = useRouter()
+
+function visualizar(id) {
+  router.push(`/produto/${id}`) // template strings (crase)
+}
 </script>
 
 <template>
@@ -19,7 +25,7 @@ const productStore = useProductStore()
       <td>{{ product.id }}</td>
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
-      <td>Em breve....</td>
+      <button @click="visualizar(product.id)">Ver</button>
     </tr>
   </tbody>
 </table>
